@@ -158,20 +158,25 @@ function goToRegister() {
         width: 98%;
         padding: 1rem;
     }
+
     .form {
         flex-direction: column;
         gap: 1rem;
         align-items: stretch;
     }
+    
     .inputs{
-    animation: fade-slide-in 1s ease-out forwards;
+        animation: fade-slide-left 1s ease-out forwards;
     }
+
     .logo {
         order: -1;
         margin-bottom: 1rem;
         margin-top: 0;
         align-items: center;
+        animation: fade-slide-in 1s ease-out forwards;
     }
+
     .logo img {
         width: 200px !important;
         height: 100px !important;
@@ -188,16 +193,30 @@ function goToRegister() {
         }
     }
 
+    @keyframes fade-slide-left {
+        from {
+            transform: translateX(-100px);
+            opacity: 0;                  
+        }
+        to {
+            transform: translateX(0);    
+            opacity: 1;                  
+        }
+    }
+
     .divider {
         display: none;
     }
+
     .title {
         font-size: 1.2rem;
     }
+
     .input {
         font-size: 0.95rem;
         padding: 0.4rem;
     }
+    
     .button {
         font-size: 0.95rem;
         padding: 0.6rem;

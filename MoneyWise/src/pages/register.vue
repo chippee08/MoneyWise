@@ -21,7 +21,7 @@
                         <input type="password" id="password" class="input" />
                     </div>
                     <button type="submit" class="button">Sign up.</button>
-                    <p>Already have an account? <a href="#" class="register" @click.prevent="goToLogin">Sign in here</a></p>
+                    <p>Already have an account? <a href="#" class="register" @click.prevent="goToLogin">Sign in here.</a></p>
                 </div>
                 <!-- Vertical divider -->
                 <div class="divider"></div>
@@ -98,7 +98,7 @@
 }
 
 .inputs{
-    animation: fade-slide-in 1s ease-out forwards;
+    animation: fade-slide-left 1s ease-out forwards;
 }
 
 .button {
@@ -133,22 +133,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     animation: fade-slide-in 1s ease-out forwards;
 }
 
 @keyframes fade-slide-in {
     from {
-        transform: translateY(100px);
+        transform: translateX(100px);
         opacity: 0;                  
     }
     to {
-        transform: translateY(0);    
+        transform: translateX(0);    
+        opacity: 1;                  
+    }
+}
+
+@keyframes fade-slide-left {
+    from {
+        transform: translateX(-100px);
+        opacity: 0;                  
+    }
+    to {
+        transform: translateX(0);    
         opacity: 1;                  
     }
 }
@@ -159,24 +164,30 @@
         width: 98%;
         padding: 1rem;
     }
+
     .form {
         flex-direction: column;
         gap: 1rem;
         align-items: stretch;
     }
+
     .inputs{
-    animation: fade-slide-in 1s ease-out forwards;
+        animation: fade-slide-left 1s ease-out forwards;
     }
+
     .logo {
         order: -1;
         margin-bottom: 1rem;
         margin-top: 0;
         align-items: center;
+        animation: fade-slide-in 1s ease-out forwards;
     }
+
     .logo img {
         width: 200px !important;
         height: 100px !important;
     }
+
     @keyframes fade-slide-in {
         from {
             transform: translateY(-100px);
@@ -187,16 +198,31 @@
             opacity: 1;                  
         }
     }
+
+    @keyframes fade-slide-left {
+        from {
+            transform: translateX(-100px);
+            opacity: 0;                  
+        }
+        to {
+            transform: translateX(0);    
+            opacity: 1;                  
+        }
+    }
+
     .divider {
         display: none;
     }
+
     .title {
         font-size: 1.2rem;
     }
+
     .input {
         font-size: 0.95rem;
         padding: 0.4rem;
     }
+    
     .button {
         font-size: 0.95rem;
         padding: 0.6rem;
