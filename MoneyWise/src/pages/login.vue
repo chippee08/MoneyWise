@@ -3,7 +3,7 @@
         <div class="container"> 
             <form action="" class="form">
                 <div class="inputs">
-                    <h1 class="title">Login</h1>
+                    <h1 class="title">Sign in</h1>
                     <div class="input-group">
                         <label for="email" class="label">Email:</label>
                         <input type="email" id="email" class="input" />
@@ -12,8 +12,8 @@
                         <label for="password" class="label">Password:</label>
                         <input type="password" id="password" class="input" />
                     </div>
-                    <button type="submit" class="button">Login</button>
-                    <p>No account yet? <a href="#" class="register">Sign up here</a></p>
+                    <button type="submit" class="button">Sign in</button>
+                    <p>No account yet? <a href="#" class="register" @click.prevent="goToRegister">Sign up here.</a></p>
                 </div>
                 <!-- Vertical divider -->
                 <div class="divider"></div>
@@ -25,11 +25,24 @@
     </div>
 </template>
 
+<!-- Logic -->
 <script lang="ts" setup>
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
+function goToRegister() {
+  router.push('/register')
+}
+
 </script>
 
+<!-- styles -->
 <style lang="scss" scoped>
 .layout {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,7 +70,6 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    /* Add gap for spacing */
     gap: 2rem;
 }
 
@@ -77,6 +89,10 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
+}
+
+.inputs{
+    animation: fade-slide-left 1s ease-out forwards;
 }
 
 .button {
@@ -111,9 +127,33 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    animation: fade-slide-in 1s ease-out forwards;
 }
 
-@media (max-width: 768px) {
+@keyframes fade-slide-in {
+    from {
+        transform: translateX(100px);
+        opacity: 0;                  
+    }
+    to {
+        transform: translateX(0);    
+        opacity: 1;                  
+    }
+}
+
+@keyframes fade-slide-left {
+    from {
+        transform: translateX(-100px);
+        opacity: 0;                  
+    }
+    to {
+        transform: translateX(0);    
+        opacity: 1;                  
+    }
+}
+
+
+@media (max-width: 1168px) {
     .container {
         width: 98%;
         padding: 1rem;
@@ -123,9 +163,11 @@
         gap: 1rem;
         align-items: stretch;
     }
-    /* Move logo to top on mobile */
+    .inputs{
+    animation: fade-slide-in 1s ease-out forwards;
+    }
     .logo {
-        order: -1; /* Move logo to the top */
+        order: -1;
         margin-bottom: 1rem;
         margin-top: 0;
         align-items: center;
@@ -134,6 +176,18 @@
         width: 200px !important;
         height: 100px !important;
     }
+
+    @keyframes fade-slide-in {
+        from {
+            transform: translateY(-100px);
+            opacity: 0;                  
+        }
+        to {
+            transform: translateX(0);    
+            opacity: 1;                  
+        }
+    }
+
     .divider {
         display: none;
     }
