@@ -12,7 +12,7 @@
                         <label for="password" class="label">Password:</label>
                         <input type="password" id="password" class="input" />
                     </div>
-                    <button type="submit" class="button">Sign in</button>
+                    <button type="submit" class="button" @click.precent="goToHome">Sign in</button>
                     <p>No account yet? <a href="#" class="register" @click.prevent="goToRegister">Sign up here.</a></p>
                 </div>
                 <!-- Vertical divider -->
@@ -31,7 +31,11 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 function goToRegister() {
-  router.push('/register')
+    router.push('/register')
+}
+
+function goToHome(){
+    router.push('/home')
 }
 
 </script>
